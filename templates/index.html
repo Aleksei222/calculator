@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div id="calc">
+        <form method="POST">
+            <input type="text" onclick="delIncorrect()" id="input" name="input" value="{{ value }}" autocomplete="off" />
+            <table>
+                <tr>
+                    <td><input type="button" class='btn' onclick="sbros()" id = 'C' value = "C"></td>
+                    <td><input type="button" class='btn' focus-visible = 'false' onclick="inputInt('(')" id = "(" value='('></td>
+                    <td><input type="button" class='btn' onclick="inputInt(')')" id = ')' value=")"></td>
+                    <td><input type="button" class='btn' onclick="dl()" id = 'del' value = "del"/></td>
+                </tr>
+                <tr>
+                    <td><input type="button" class='btn' onclick="inputInt('1')" id = 1 value = "1"></td>
+                    <td><input type="button" class='btn' onclick="inputInt('2')" id = 2 value='2'></td>
+                    <td><input type="button" class='btn' onclick="inputInt('3')" id = 3 value="3"></td>
+                    <td><input type="button" class='btn' onclick="inputInt('/')" id = 'delit' value = "/"/></td>
+                </tr>
+                <tr>
+                    <td><input type="button" class='btn' onclick="inputInt('4')" id = 4 value = "4"/></td>
+                    <td><input type="button" class='btn' onclick="inputInt('5')" id = 5 value = "5"/></td>
+                    <td><input type="button" class='btn' onclick="inputInt('6')" id = 6 value = "6"/></td>
+                    <td><input type="button" class='btn' onclick="inputInt('*')" id = 'um' value = "*"/></td>
+                </tr>
+                <tr>
+                    <td><input type="button" class='btn' onclick="inputInt('7')" id = 7 value = "7"/></td>
+                    <td><input type="button" class='btn' onclick="inputInt('8')" id = 8 value = "8"/></td>
+                    <td><input type="button" class='btn' onclick="inputInt('9')" id = 9 value = "9"/></td>
+                    <td><input type="button" class='btn' onclick="inputInt('-')" id = 'min' value = "-"/></td>
+                </tr>
+                <tr>
+                    <td><input type="button" class='btn' onclick="inputInt(',')" id = 'zap' value = ","/></td>
+                    <td><input type="button" class='btn' onclick="inputInt('0')" id = 0 value = "0"/></td>
+                    <td><input type="submit"  class='btn' id = 'ent' value="="></td>
+                    <td><input type="button" class='btn' onclick="inputInt('+')" id = 'plus' value = "+"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>        

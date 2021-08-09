@@ -46,7 +46,7 @@ def inc(str):
     return False
 
 def correct(str):
-    a = "+-/*1234567890()"
+    a = "+-/*1234567890()."
     for lit in str:
         if lit not in a:
             return False

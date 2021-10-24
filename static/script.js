@@ -13,3 +13,18 @@ function delIncorrect(){
         document.getElementById("input").value = ""
     } 
 }
+
+async function calc(e) {
+    e.preventDefault();
+    const input = document.getElementById('input');
+    const response = await fetch('/api/calc/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({expression: input.value})
+    });
+    const result = await response.json();
+    input.placeholder = result.placeholder;
+    input.value = result.value;
+}

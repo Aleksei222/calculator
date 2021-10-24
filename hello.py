@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from flaskext.mysql import MySQL
 from pyton.correct import correct
 from pyton.calc import calc
+import json
 
 app = Flask("compute")
 mysql = MySQL()
@@ -13,18 +14,20 @@ mysql.init_app(app)
 
 
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/', methods=['GET'])
 def main():
-    if request.method == 'GET':
-        value = ""
-        return render_template('index.html', value = value)
-    if request.method == 'POST':
-        inp = request.form['input']
-        if correct(inp):            
-            value = calc(inp)
-        else:
-            value = "incorrect"     
-    return render_template('index.html', value = value)
+    return render_template('index.html')
+
+@app.route('/api/calc/', methods=['POST'])
+def get_calc():
+    inp = request.get_json()['expression']
+    if correct(inp):            
+        value = calc(inp)
+        placeholder = ''
+    else:
+        placeholder = "incorrect"
+        value = ''
+    return json.dumps({"value": value, "placeholder": placeholder})
     
 if __name__ == "__main__":
     app.run()

@@ -41,7 +41,8 @@ def inc(str):
     reg4 = re.compile(r'\)\d')
     reg5 = re.compile(r'[+/*]')
     reg6 = re.compile(r'[-+/*]{2}')
-    if reg1.search(str)!=None or reg2.search(str)!=None or reg3.search(str)!=None or reg4.search(str)!=None or reg5.match(str)!=None or reg6.search(str)!=None:
+    reg7 = re.compile(r'/0')
+    if reg1.search(str)!=None or reg2.search(str)!=None or reg3.search(str)!=None or reg4.search(str)!=None or reg5.match(str)!=None or reg6.search(str)!=None or reg7.search(str)!=None:
         return True
     return False
 

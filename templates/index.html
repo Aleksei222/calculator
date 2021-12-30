@@ -1,38 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Calculator</title>
+    <title>Document</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div id="calc" >
-        <form onsubmit="calc(event)" class = 'content'>
-            <input type="text" onclick="delIncorrect()" maxlength="32" id="input" name="input" autocomplete="off" />
-            <div class = 'btns'>
-                <input type="button" class='btn' onclick="sbros()" id = 'C' value = "C">
-                <input type="button" class='btn' onclick="inputInt('(')" id = "(" value='('>
-                <input type="button" class='btn' onclick="inputInt(')')" id = ')' value=")">
-                <input type="button" class='btn' onclick="dl()" id = 'del' value = "del"/>
-                <input type="button" class='btn' onclick="inputInt('1')" id = 1 value = "1">
-                <input type="button" class='btn' onclick="inputInt('2')" id = 2 value='2'>
-                <input type="button" class='btn' onclick="inputInt('3')" id = 3 value="3">
-                <input type="button" class='btn' onclick="inputInt('/')" id = 'delit' value = "/"/>            
-                <input type="button" class='btn' onclick="inputInt('4')" id = 4 value = "4"/>
-                <input type="button" class='btn' onclick="inputInt('5')" id = 5 value = "5"/>
-                <input type="button" class='btn' onclick="inputInt('6')" id = 6 value = "6"/>
-                <input type="button" class='btn' onclick="inputInt('*')" id = 'um' value = "*"/>
-                <input type="button" class='btn' onclick="inputInt('7')" id = 7 value = "7"/>
-                <input type="button" class='btn' onclick="inputInt('8')" id = 8 value = "8"/>
-                <input type="button" class='btn' onclick="inputInt('9')" id = 9 value = "9"/>
-                <input type="button" class='btn' onclick="inputInt('-')" id = 'min' value = "-"/>
-                <input type="button" class='btn' onclick="inputInt('.')" id = 'dot' value = "."/>
-                <input type="button" class='btn' onclick="inputInt('0')" id = 0 value = "0"/>
-                <input type="submit" class='btn' id = 'ent' value="=">
-                <input type="button" class='btn' onclick="inputInt('+')" id = 'plus' value = "+"/>
-            </div>
+    {% raw %}
+    <div id = 'calc'>
+        <form @submit = "calc">
+            <input type="text" v-bind:value = "exp" maxlength="32" id="input" name="input" autocomplete="off" />
+            <key value = "C" @click = "Sbros"></key>
+            <key :value = "K" @click = "Dl"></key>
+            <key :value="symbol"  @click = 'exp += symbol' v-for = 'symbol in keys'>
+            </key>
+            <button type = "submit" class = 'btn'>=</button>
         </form>
     </div>
+    {% endraw %}
+    <script src="https://unpkg.com/vue@next"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
-</html>        
+</html>
